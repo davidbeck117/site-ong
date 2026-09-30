@@ -7,6 +7,10 @@ Esse projeto é um site para a ONG Bairro Limpo e faz parte das minhas atividade
 >
 > Usei IA como apoio na construção da base, mas fui eu que defini o conceito e a estrutura do projeto.
 
+## Estado do projeto
+
+A versão atual é a v0.1.0 e ainda é uma base em desenvolvimento. O site não foi testado em um servidor estável. A revisão de acessibilidade, os testes de funcionamento e a publicação ficam para as próximas etapas da atividade.
+
 ## Funcionalidades
 
 - Navegação entre início, projetos e cadastro, sem recarregar a página.
