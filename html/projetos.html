@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça os mutirões, as campanhas educativas e as formas de ajudar a ONG Bairro Limpo.">
+  <title>Projetos - ONG Bairro Limpo</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="pagina">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <header id="cabecalho-principal">
+    <div class="container cabecalho__conteudo">
+      <a class="marca" href="index.html#inicio">
+        <img class="marca__simbolo" src="../imagens/folha.svg" alt="" width="40" height="40">
+        ONG Bairro Limpo
+      </a>
+      <!-- O checkbox controla o menu pelo CSS. -->
+      <input class="controle-menu" type="checkbox" id="controle-menu"
+        aria-label="Abrir ou fechar menu principal" aria-controls="menu-principal">
+      <label class="botao-menu" for="controle-menu" title="Abrir ou fechar menu">☰</label>
+      <nav class="navegacao" id="menu-principal" aria-label="Menu principal">
+        <ul class="menu-lista">
+          <li><a class="menu-link" href="index.html#inicio">Início</a></li>
+          <li class="item-submenu">
+            <a class="menu-link" href="index.html#projetos" aria-current="page">Projetos</a>
+            <input class="controle-submenu" type="checkbox" id="controle-projetos"
+              aria-label="Abrir ou fechar submenu de projetos" aria-controls="submenu-projetos">
+            <label class="botao-submenu" for="controle-projetos" title="Abrir ou fechar submenu">▾</label>
+            <ul class="submenu" id="submenu-projetos">
+              <li><a class="menu-link" href="index.html#projetos/acoes">Ações de limpeza</a></li>
+              <li><a class="menu-link" href="index.html#projetos/voluntariado">Trabalho voluntário</a></li>
+              <li><a class="menu-link" href="index.html#projetos/doacoes">Doações financeiras</a></li>
+            </ul>
+          </li>
+          <li><a class="menu-link" href="index.html#cadastro">Cadastro</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="conteudo" tabindex="-1">
+    <section class="apresentacao">
+      <p class="sobretitulo">Cuidar também é participar</p>
+      <h1>Nossos projetos e como participar</h1>
+      <p class="apresentacao__resumo">Cuidar do bairro é uma tarefa que podemos compartilhar. Conheça as ações da ONG Bairro Limpo e veja como ajudar.</p>
+    </section>
+
+    <p class="alerta" role="note"><strong>Como ajudar?</strong> Conheça as ações abaixo e veja os dados solicitados na página de cadastro.</p>
+
+    <div class="checkbox">
+      <input type="checkbox" id="mostrar-lembrete" aria-controls="lembrete">
+      <label for="mostrar-lembrete">Mostrar lembrete de participação</label>
+      <aside class="toast" id="lembrete" role="status">
+        <p><strong>Seu apoio faz diferença!</strong></p>
+        <p>Escolha um projeto e veja os campos na página de cadastro.</p>
+      </aside>
+    </div>
+
+    <section id="acoes">
+      <header class="secao__cabecalho">
+        <h2 class="titulo-secao">Ações de limpeza e conscientização</h2>
+        <p class="secao__introducao">Nosso trabalho busca diminuir o lixo nas ruas e incentivar os moradores a cuidar dos espaços que todos utilizam. Para isso, organizamos duas ações:</p>
+      </header>
+      <div class="grade-12">
+        <article class="cartao">
+          <p class="cartao__numero">01</p>
+          <h3 class="cartao__titulo">Mutirões de limpeza</h3>
+          <p class="etiqueta">Meio ambiente</p>
+          <p>Reunimos voluntários para recolher o lixo de ruas e praças e encaminhar os resíduos para o destino adequado.</p>
+          <a class="cartao__link" href="index.html#cadastro">Participar dos mutirões →</a>
+        </article>
+        <article class="cartao">
+          <p class="cartao__numero">02</p>
+          <h3 class="cartao__titulo">Campanhas educativas</h3>
+          <p class="etiqueta">Educação</p>
+          <p>Conversamos com os moradores sobre o descarte correto do lixo e os cuidados para manter o bairro limpo.</p>
+          <a class="cartao__link" href="index.html#cadastro">Ajudar nas campanhas →</a>
+        </article>
+        <article class="cartao" id="voluntariado">
+          <p class="cartao__numero">03</p>
+          <h3 class="cartao__titulo">Trabalho voluntário</h3>
+          <p class="etiqueta">Voluntariado</p>
+          <p>Quem deseja participar pode ajudar nos mutirões, na organização dos materiais ou na divulgação das nossas ações.</p>
+          <p>Para demonstrar seu interesse, preencha o cadastro de colaboradores. Assim, nossa equipe poderá entrar em contato para combinar sua participação.</p>
+          <a class="cartao__link" href="index.html#cadastro">Quero ser voluntário →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="secao doacoes" id="doacoes">
+      <div class="doacoes__conteudo">
+        <p class="sobretitulo">Outra forma de ajudar</p>
+        <h2 class="titulo-secao">Doações financeiras</h2>
+        <p>As contribuições financeiras ajudam na compra de luvas, sacos de lixo e outros materiais utilizados nos mutirões de limpeza.</p>
+        <p>Quem deseja contribuir pode entrar em contato com a nossa equipe para conhecer a campanha de arrecadação e receber orientações sobre como doar.</p>
+        <p>E-mail: <a href="mailto:bairrolimpo@example.org">bairrolimpo@example.org</a></p>
+      </div>
+    </section>
+    <p class="links-pagina"><a href="index.html#inicio">Voltar para a página inicial</a></p>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__conteudo">
+      <p>ONG Bairro Limpo — Cuidando do nosso bairro.</p>
+      <a href="#conteudo">Voltar ao início ↑</a>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça a ONG Bairro Limpo, nossos mutirões de limpeza e as formas de participar.">
+  <title>ONG Bairro Limpo</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/projetos.js" defer></script>
+  <script src="../js/validacao.js" defer></script>
+  <script src="../js/armazenamento.js" defer></script>
+  <script src="../js/formularios.js" defer></script>
+  <script src="../js/script.js" defer></script>
+</head>
+<body class="pagina">
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <header id="cabecalho-principal">
+    <div class="container cabecalho__conteudo">
+      <a class="marca" href="#inicio">
+        <img class="marca__simbolo" src="../imagens/folha.svg" alt="" width="40" height="40">
+        ONG Bairro Limpo
+      </a>
+      <!-- O checkbox controla o menu pelo CSS. -->
+      <input class="controle-menu" type="checkbox" id="controle-menu"
+        aria-label="Abrir ou fechar menu principal" aria-controls="menu-principal">
+      <label class="botao-menu" for="controle-menu" title="Abrir ou fechar menu">☰</label>
+      <nav class="navegacao" id="menu-principal" aria-label="Menu principal">
+        <ul class="menu-lista">
+          <li><a class="menu-link" href="#inicio" aria-current="page">Início</a></li>
+          <li class="item-submenu">
+            <a class="menu-link" href="#projetos">Projetos</a>
+            <input class="controle-submenu" type="checkbox" id="controle-projetos"
+              aria-label="Abrir ou fechar submenu de projetos" aria-controls="submenu-projetos">
+            <label class="botao-submenu" for="controle-projetos" title="Abrir ou fechar submenu">▾</label>
+            <ul class="submenu" id="submenu-projetos">
+              <li><a class="menu-link" href="#projetos/acoes">Ações de limpeza</a></li>
+              <li><a class="menu-link" href="#projetos/voluntariado">Trabalho voluntário</a></li>
+              <li><a class="menu-link" href="#projetos/doacoes">Doações financeiras</a></li>
+            </ul>
+          </li>
+          <li><a class="menu-link" href="#cadastro">Cadastro</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="conteudo" tabindex="-1"></main>
+
+  <footer class="rodape">
+    <div class="container rodape__conteudo">
+      <p>ONG Bairro Limpo — Cuidando do nosso bairro.</p>
+      <a href="#conteudo">Voltar ao início ↑</a>
+    </div>
+  </footer>
+  <!-- As rotas carregam estes modelos dentro do main. -->
+
+  <template id="pagina-inicio">
+    <section class="apresentacao">
+      <p class="sobretitulo">Pequenas atitudes. Um bairro melhor.</p>
+      <h1>ONG Bairro Limpo</h1>
+      <h2 class="titulo-pequeno">Quem somos</h2>
+      <p class="apresentacao__resumo">Nossa ONG reúne pessoas que querem diminuir o lixo nas ruas e cuidar do bairro onde vivem. Acreditamos que pequenas atitudes podem deixar nossa comunidade mais limpa e agradável para todos.</p>
+    </section>
+
+    <div class="destaque grade-12">
+      <picture class="destaque__imagem">
+        <source srcset="../imagens/imagem_limpeza_do_bairro.webp" type="image/webp">
+        <img src="../imagens/imagem_limpeza_do_bairro.jpg"
+          alt="Ilustração de moradores e trabalhadores cuidando da limpeza de um bairro. Uma placa diz: Um bairro limpo é mais bonito e saudável."
+          width="1312" height="816">
+      </picture>
+
+      <form id="formulario-interesse" class="formulario formulario--flutuante" novalidate>
+        <p class="sobretitulo">Faça parte</p>
+        <h2 class="formulario__titulo">Seja voluntário</h2>
+        <p>Quer ajudar a deixar o bairro mais limpo? Acesse a página de cadastro da nossa ONG.</p>
+        <p class="alerta" role="note"><strong>Cadastro demonstrativo.</strong> Use dados fictícios. O rascunho fica salvo neste navegador. Este formulário não realiza uma inscrição na ONG.</p>
+        <p class="campo">
+          <label for="nome-interesse">Seu nome (obrigatório)</label>
+          <input class="campo__entrada" type="text" id="nome-interesse" name="nome" placeholder="Como podemos chamar você?" autocomplete="name" required aria-describedby="erro-nome-interesse">
+          <small class="campo__erro" id="erro-nome-interesse" aria-live="polite"></small>
+        </p>
+        <p class="campo">
+          <label for="email-interesse">E-mail (obrigatório)</label>
+          <input class="campo__entrada campo__entrada--email" type="email" id="email-interesse" name="email" placeholder="voce@exemplo.com" autocomplete="email" required aria-describedby="erro-email-interesse">
+          <small class="campo__erro" id="erro-email-interesse" aria-live="polite"></small>
+        </p>
+        <p class="checkbox">
+          <input type="checkbox" id="interesse-mutiroes" name="interesse_mutiroes" value="sim">
+          <label for="interesse-mutiroes">Tenho interesse nos mutirões.</label>
+        </p>
+        <button class="botao botao--primario botao--largo" type="submit">Quero ser voluntário</button>
+        <a href="#cadastro">Ir para a página de cadastro</a>
+        <p class="mensagem-formulario" role="status"></p>
+      </form>
+    </div>
+
+    <section class="secao" id="projetos">
+      <header class="secao__cabecalho">
+        <p class="sobretitulo">Juntos pela comunidade</p>
+        <h2 class="titulo-secao">Conheça nossos projetos e saiba como participar</h2>
+        <p class="secao__introducao">Cuidar do bairro é uma tarefa que podemos compartilhar. Conheça as ações da ONG Bairro Limpo e veja como ajudar.</p>
+      </header>
+      <div class="texto-apoio">
+        <h3>Ações de limpeza e conscientização</h3>
+        <p>Nosso trabalho busca diminuir o lixo nas ruas e incentivar os moradores a cuidar dos espaços que todos utilizam. Para isso, organizamos duas ações:</p>
+      </div>
+      <div class="grade-12" id="lista-projetos"></div>
+    </section>
+
+    <section class="secao sobre grade-12">
+      <div class="sobre__texto">
+        <h2 class="titulo-secao">O que fazemos</h2>
+        <p>Organizamos mutirões de limpeza e orientamos os moradores sobre o descarte correto do lixo. Nosso objetivo é recolher os resíduos das ruas, encaminhá-los para o destino adequado e evitar novos descartes nesses locais. Também recebemos voluntários que desejam participar das nossas ações.</p>
+        <a href="#projetos">Conheça nossos projetos e saiba como participar</a>
+      </div>
+      <div class="sobre__texto contato">
+        <h2 class="titulo-secao">Fale com a gente</h2>
+        <p>Quer participar de uma ação de limpeza ou conhecer melhor nosso trabalho? Entre em contato com a nossa equipe.</p>
+        <address class="contato__dados">
+          <p>E-mail: <a href="mailto:bairrolimpo@example.org">bairrolimpo@example.org</a></p>
+          <p>Telefone: (11) 00000-0000</p>
+        </address>
+      </div>
+    </section>
+
+    <section class="secao doacoes" id="doacoes">
+      <div class="doacoes__conteudo">
+        <p class="sobretitulo">Outra forma de ajudar</p>
+        <h2 class="titulo-secao">Doações financeiras</h2>
+        <p>As contribuições financeiras ajudam na compra de luvas, sacos de lixo e outros materiais utilizados nos mutirões de limpeza.</p>
+        <p>Quem deseja contribuir pode entrar em contato com a nossa equipe para conhecer a campanha de arrecadação e receber orientações sobre como doar.</p>
+        <p>E-mail: <a href="mailto:bairrolimpo@example.org">bairrolimpo@example.org</a></p>
+      </div>
+    </section>
+    </template>
+
+  <template id="pagina-projetos">
+    <section class="apresentacao">
+      <p class="sobretitulo">Cuidar também é participar</p>
+      <h1>Nossos projetos e como participar</h1>
+      <p class="apresentacao__resumo">Cuidar do bairro é uma tarefa que podemos compartilhar. Conheça as ações da ONG Bairro Limpo e veja como ajudar.</p>
+    </section>
+
+    <p class="alerta" role="note"><strong>Como ajudar?</strong> Conheça as ações abaixo e veja os dados solicitados na página de cadastro.</p>
+
+    <div class="checkbox">
+      <input type="checkbox" id="mostrar-lembrete" aria-controls="lembrete">
+      <label for="mostrar-lembrete">Mostrar lembrete de participação</label>
+      <aside class="toast" id="lembrete" role="status">
+        <p><strong>Seu apoio faz diferença!</strong></p>
+        <p>Escolha um projeto e veja os campos na página de cadastro.</p>
+      </aside>
+    </div>
+
+    <section id="acoes">
+      <header class="secao__cabecalho">
+        <h2 class="titulo-secao">Ações de limpeza e conscientização</h2>
+        <p class="secao__introducao">Nosso trabalho busca diminuir o lixo nas ruas e incentivar os moradores a cuidar dos espaços que todos utilizam. Para isso, organizamos duas ações:</p>
+      </header>
+      <div class="grade-12" id="lista-projetos"></div>
+    </section>
+
+    <section class="secao doacoes" id="doacoes">
+      <div class="doacoes__conteudo">
+        <p class="sobretitulo">Outra forma de ajudar</p>
+        <h2 class="titulo-secao">Doações financeiras</h2>
+        <p>As contribuições financeiras ajudam na compra de luvas, sacos de lixo e outros materiais utilizados nos mutirões de limpeza.</p>
+        <p>Quem deseja contribuir pode entrar em contato com a nossa equipe para conhecer a campanha de arrecadação e receber orientações sobre como doar.</p>
+        <p>E-mail: <a href="mailto:bairrolimpo@example.org">bairrolimpo@example.org</a></p>
+      </div>
+    </section>
+    <p class="links-pagina"><a href="#inicio">Voltar para a página inicial</a></p>
+    </template>
+
+  <template id="pagina-cadastro">
+    <section class="apresentacao">
+      <p class="sobretitulo">Vamos cuidar do bairro juntos</p>
+      <h1>Cadastro de colaboradores</h1>
+      <p class="apresentacao__resumo">Preencha os campos abaixo para experimentar o cadastro. Todos os campos são obrigatórios.</p>
+    </section>
+
+    <form id="formulario-cadastro" class="formulario formulario--completo" novalidate>
+      <p class="alerta" role="note"><strong>Cadastro demonstrativo.</strong> Use dados fictícios. O rascunho fica salvo neste navegador. Este formulário não realiza uma inscrição na ONG.</p>
+      <fieldset>
+        <legend>Dados pessoais</legend>
+        <div class="formulario__grade">
+          <p class="campo campo--inteiro">
+            <label for="nome">Nome completo:</label>
+            <input class="campo__entrada" type="text" id="nome" name="nome" placeholder="Seu nome completo" autocomplete="name" required aria-describedby="erro-nome">
+            <small class="campo__erro" id="erro-nome" aria-live="polite"></small>
+          </p>
+          <p class="campo">
+            <label for="cpf">CPF:</label>
+            <input class="campo__entrada" type="text" id="cpf" name="cpf" inputmode="text" maxlength="14"
+              placeholder="000.000.000-00" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
+              title="Digite o CPF no formato 000.000.000-00." aria-describedby="ajuda-cpf erro-cpf" required>
+            <small class="campo__erro" id="erro-cpf" aria-live="polite"></small>
+            <small class="campo__ajuda" id="ajuda-cpf">Use pontos e traço: 000.000.000-00.</small>
+          </p>
+          <p class="campo">
+            <label for="data_nascimento">Data de nascimento:</label>
+            <input class="campo__entrada" type="date" id="data_nascimento" name="data_nascimento" min="1900-01-01" autocomplete="bday" required aria-describedby="erro-data_nascimento">
+            <small class="campo__erro" id="erro-data_nascimento" aria-live="polite"></small>
+          </p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Contato</legend>
+        <div class="formulario__grade">
+          <p class="campo">
+            <label for="email">E-mail:</label>
+            <input class="campo__entrada campo__entrada--email" type="email" id="email" name="email" placeholder="voce@exemplo.com" autocomplete="email" required aria-describedby="erro-email">
+            <small class="campo__erro" id="erro-email" aria-live="polite"></small>
+          </p>
+          <p class="campo">
+            <label for="telefone">Telefone:</label>
+            <input class="campo__entrada" type="tel" id="telefone" name="telefone" inputmode="text" maxlength="15"
+              placeholder="(00) 00000-0000" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}"
+              title="Digite o DDD e o telefone: (00) 00000-0000 ou (00) 0000-0000."
+              autocomplete="tel" aria-describedby="ajuda-telefone erro-telefone" required>
+            <small class="campo__erro" id="erro-telefone" aria-live="polite"></small>
+            <small class="campo__ajuda" id="ajuda-telefone">Inclua os sinais: (00) 00000-0000 ou (00) 0000-0000.</small>
+          </p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Endereço</legend>
+        <div class="formulario__grade">
+          <p class="campo">
+            <label for="cep">CEP:</label>
+            <input class="campo__entrada" type="text" id="cep" name="cep" inputmode="text" maxlength="9"
+              placeholder="00000-000" pattern="[0-9]{5}-[0-9]{3}" title="Digite o CEP no formato 00000-000."
+              autocomplete="postal-code" aria-describedby="ajuda-cep erro-cep" required>
+            <small class="campo__erro" id="erro-cep" aria-live="polite"></small>
+            <small class="campo__ajuda" id="ajuda-cep">Inclua o traço: 00000-000.</small>
+          </p>
+          <p class="campo">
+            <label for="estado">Estado:</label>
+            <input class="campo__entrada" type="text" id="estado" name="estado" placeholder="Ex.: São Paulo" autocomplete="address-level1" required aria-describedby="erro-estado">
+            <small class="campo__erro" id="erro-estado" aria-live="polite"></small>
+          </p>
+          <p class="campo">
+            <label for="cidade">Cidade:</label>
+            <input class="campo__entrada" type="text" id="cidade" name="cidade" placeholder="Sua cidade" autocomplete="address-level2" required aria-describedby="erro-cidade">
+            <small class="campo__erro" id="erro-cidade" aria-live="polite"></small>
+          </p>
+          <p class="campo">
+            <label for="rua">Rua:</label>
+            <input class="campo__entrada" type="text" id="rua" name="rua" placeholder="Nome da rua" autocomplete="address-line1" required aria-describedby="erro-rua">
+            <small class="campo__erro" id="erro-rua" aria-live="polite"></small>
+          </p>
+          <p class="campo">
+            <label for="numero">Número:</label>
+            <input class="campo__entrada" type="text" id="numero" name="numero" placeholder="Ex.: 125, 125A ou s/n" required aria-describedby="erro-numero">
+            <small class="campo__erro" id="erro-numero" aria-live="polite"></small>
+          </p>
+        </div>
+      </fieldset>
+
+      <button class="botao botao--primario" type="submit">Enviar cadastro</button>
+      <p class="mensagem-formulario" role="status"></p>
+    </form>
+
+    <div class="links-pagina">
+      <a href="#projetos">Conheça nossos projetos</a>
+      <a href="#inicio">Voltar para a página inicial</a>
+    </div>
+    </template>
+  <!-- Modelo dos cartões preenchidos em projetos.js. -->
+  <template id="modelo-projeto">
+    <article class="cartao">
+      <p class="cartao__numero"></p>
+      <h3 class="cartao__titulo"></h3>
+      <p class="etiqueta"></p>
+      <p class="cartao__descricao"></p>
+      <p class="cartao__complemento"></p>
+      <a class="cartao__link" href="#cadastro"></a>
+    </article>
+  </template>
+
+</body>
+</html>
