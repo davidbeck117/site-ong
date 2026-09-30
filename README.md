@@ -2,6 +2,11 @@
 
 Esse projeto é um site para a ONG Bairro Limpo e faz parte das minhas atividades da faculdade. A ONG é fictícia e foi criada apenas como base para a atividade. O site tem uma apresentação, informações sobre os projetos e um formulário de cadastro demonstrativo.
 
+> [!NOTE]
+> Esse projeto é minha primeira experiência mais aprofundada com HTML, CSS e JavaScript. Como ainda estou aprendendo e fiz tudo em pouco tempo, o código pode ter muitos erros e partes mais amadoras, que pretendo refinar com o tempo.
+>
+> Usei IA como apoio na construção da base, mas fui eu que defini o conceito e a estrutura do projeto.
+
 ## Funcionalidades
 
 - Navegação entre início, projetos e cadastro, sem recarregar a página.
