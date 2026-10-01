@@ -9,7 +9,7 @@ Esse projeto é um site para a ONG Bairro Limpo e faz parte das minhas atividade
 
 ## Estado do projeto
 
-A versão atual é a v0.1.0 e ainda é uma base em desenvolvimento. O site não foi testado em um servidor estável. A revisão de acessibilidade, os testes de funcionamento e a publicação ficam para as próximas etapas da atividade.
+A primeira entrega foi marcada como v0.1.0. O projeto continua em desenvolvimento e já tem modo escuro e geração de uma versão minificada. A revisão completa de acessibilidade e a publicação do site ainda estão pendentes.
 
 ## Funcionalidades
 
@@ -20,10 +20,11 @@ A versão atual é a v0.1.0 e ainda é uma base em desenvolvimento. O site não 
 - Rascunhos dos formulários salvos no navegador.
 - Layout que se adapta a diferentes tamanhos de tela.
 - Modo escuro automático, seguindo a preferência do sistema ou navegador.
+- Geração de HTML, CSS e JavaScript minificados para publicação.
 
 ## Tecnologias
 
-HTML, CSS e JavaScript, sem frameworks ou bibliotecas externas.
+HTML, CSS e JavaScript, sem frameworks no site. Para preparar os arquivos de publicação, uso Node.js com esbuild e html-minifier-terser.
 
 ## Modo escuro
 
@@ -35,7 +36,28 @@ O site acompanha o tema escolhido no sistema ou navegador. No modo escuro, os fu
 2. Abra `html/index.html` no navegador, com JavaScript habilitado.
 3. Use o menu para acessar as outras páginas do site.
 
-Não é necessário instalar dependências. Para editar, abra a pasta em um editor de código, salve as alterações e atualize o navegador.
+Para abrir os arquivos originais, basta o navegador. Para editar, abra a pasta em um editor de código, salve as alterações e atualize a página.
+
+## Preparar a versão para publicação
+
+Para esta parte, é preciso ter Node.js 22 ou mais recente, com npm. Na pasta do projeto, execute:
+
+```sh
+npm ci
+npm run build
+```
+
+O build junta os arquivos JavaScript na ordem de carregamento e minifica o JavaScript, o CSS e o HTML. Os arquivos prontos ficam em `dist/`, com `index.html` na entrada. As imagens são copiadas para essa pasta.
+
+O relatório em `build/relatorio.json` mostra os tamanhos antes e depois e a porcentagem de redução. Essa conta considera HTML, CSS e JavaScript, sem incluir imagens ou compressão do servidor.
+
+Para conferir a versão gerada no navegador:
+
+```sh
+npm run preview
+```
+
+Abra [http://127.0.0.1:4173](http://127.0.0.1:4173). Para encerrar a prévia, use Ctrl+C no terminal. Faça as alterações nas pastas `html`, `css` e `js` e gere o build novamente quando quiser atualizar a versão de publicação.
 
 ## Versionamento
 
@@ -68,6 +90,13 @@ site-ong/
 │   ├── formularios.js   # Eventos e rascunhos dos formulários
 │   └── armazenamento.js # Leitura e gravação no localStorage
 ├── imagens/
+├── scripts/
+│   ├── build.mjs       # Gera os arquivos minificados e o relatório
+│   └── preview.mjs     # Abre a versão gerada em um servidor local
+├── package.json       # Comandos e ferramentas do projeto
+├── package-lock.json  # Versões das dependências
+├── dist/              # Arquivos de publicação gerados pelo build
+├── build/             # Relatório de tamanho gerado pelo build
 ├── .gitattributes
 ├── .gitignore
 └── README.md
