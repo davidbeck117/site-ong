@@ -32,6 +32,20 @@ HTML, CSS e JavaScript, sem frameworks ou bibliotecas externas.
 
 Não é necessário instalar dependências. Para editar, abra a pasta em um editor de código, salve as alterações e atualize o navegador.
 
+## Versionamento
+
+Uso o Git para registrar as mudanças e o GitHub para guardar o código e acompanhar o histórico. Por enquanto, a `main` reúne a versão revisada do projeto. Para fazer mudanças, uso uma branch separada e abro um pull request para conferir o que foi alterado antes de juntar com a `main`.
+
+As mensagens dos commits começam com um tipo, seguido de uma descrição curta:
+
+- `feat:` para adicionar funcionalidades.
+- `fix:` para corrigir problemas.
+- `docs:` para mudanças na documentação, como este README.
+
+A primeira entrega recebeu a tag [v0.1.0](https://github.com/davidbeck117/site-ong/releases/tag/v0.1.0) e ficou como pré-lançamento, porque o site ainda é uma base em desenvolvimento. A numeração segue o formato `MAJOR.MINOR.PATCH`: o primeiro número indica mudanças que quebram a compatibilidade, o segundo indica novas funcionalidades e o terceiro, correções. Enquanto estiver na versão `0.x.x`, a estrutura ainda pode mudar bastante.
+
+As tarefas pendentes ficam nas [issues](https://github.com/davidbeck117/site-ong/issues). O marco [Revisão e preparação do site](https://github.com/davidbeck117/site-ong/milestone/1), chamado de milestone no GitHub, reúne o que falta revisar antes da primeira versão estável.
+
 ## Organização dos arquivos
 
 ```text
