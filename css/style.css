@@ -2,6 +2,8 @@
 
 /* Cores, tipografia e espaçamentos */
 :root {
+    color-scheme: light;
+
     --cor-primaria: #245C40;
     --cor-primaria-escura: #18432D;
     --cor-primaria-clara: #E8F1E7;
@@ -12,6 +14,7 @@
     --cor-fundo: #FAFAF6;
     --cor-superficie: #FFFFFF;
 
+    --cor-texto-botao: #FFFFFF;
     --cor-texto: #23382D;
     --cor-texto-secundario: #516157;
 
@@ -437,11 +440,11 @@ main {
 }
 .botao--primario {
     background: linear-gradient(135deg, var(--cor-primaria), var(--cor-primaria-escura));
-    color: var(--cor-superficie);
+    color: var(--cor-texto-botao);
 }
 .botao--primario:hover:not(:disabled) {
     background: var(--cor-primaria-escura);
-    color: var(--cor-superficie);
+    color: var(--cor-texto-botao);
     opacity: 0.9;
 }
 
@@ -685,4 +688,30 @@ main {
 }
 .campo__erro:empty {
     display: none;
+}
+
+/* Segue o tema escolhido no sistema ou navegador. */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --cor-primaria: #8ED9A4;
+        --cor-primaria-escura: #B9EDC8;
+        --cor-primaria-clara: #263D2E;
+        --cor-secundaria: #4A3A14;
+        --cor-secundaria-escura: #E6C867;
+        --cor-fundo: #121B15;
+        --cor-superficie: #1C2A21;
+        --cor-texto-botao: #14231A;
+        --cor-texto: #EAF2EC;
+        --cor-texto-secundario: #BDCDC1;
+        --cor-borda: #819A89;
+        --cor-sucesso: #8ED9A4;
+        --cor-erro: #FF9DA7;
+        --sombra-suave: 0 8px 24px rgba(0, 0, 0, 0.25);
+        --sombra-flutuante: 0 16px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .titulo-secao::before {
+        background-color: var(--cor-secundaria-escura);
+    }
 }

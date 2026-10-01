@@ -19,10 +19,15 @@ A versão atual é a v0.1.0 e ainda é uma base em desenvolvimento. O site não 
 - Validação dos campos e mensagens de erro no formulário.
 - Rascunhos dos formulários salvos no navegador.
 - Layout que se adapta a diferentes tamanhos de tela.
+- Modo escuro automático, seguindo a preferência do sistema ou navegador.
 
 ## Tecnologias
 
 HTML, CSS e JavaScript, sem frameworks ou bibliotecas externas.
+
+## Modo escuro
+
+O site acompanha o tema escolhido no sistema ou navegador. No modo escuro, os fundos ficam mais escuros e os textos, links e ícones usam cores mais claras. Isso foi feito no CSS, aproveitando as variáveis de cor. Para testar, mude a preferência de tema do sistema ou do navegador.
 
 ## Como abrir
 
