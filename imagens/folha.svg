@@ -1,4 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#245C40" stroke-width="1.8">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      svg { stroke: #8ED9A4; }
+    }
+  </style>
   <path d="M20 4C9 3 3 7 5 14c1 4 6 5 9 3 4-3 5-8 6-13Z"/>
   <path d="M4 21 15 10" stroke-linecap="round"/>
 </svg>
