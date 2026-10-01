@@ -9,7 +9,7 @@ Esse projeto é um site para a ONG Bairro Limpo e faz parte das minhas atividade
 
 ## Estado do projeto
 
-A primeira entrega foi marcada como v0.1.0. O projeto continua em desenvolvimento e já tem modo escuro e geração de uma versão minificada. A revisão completa de acessibilidade e a publicação do site ainda estão pendentes.
+A primeira entrega foi marcada como v0.1.0. O projeto continua em desenvolvimento e já tem modo escuro, imagens adaptadas a diferentes telas, geração de uma versão minificada e publicação pelo GitHub Pages. A revisão completa de acessibilidade ainda está pendente.
 
 ## Funcionalidades
 
@@ -66,6 +66,19 @@ npm run preview
 
 Abra [http://127.0.0.1:4173](http://127.0.0.1:4173). Para encerrar a prévia, use Ctrl+C no terminal. Faça as alterações nas pastas `html`, `css` e `js` e gere o build novamente quando quiser atualizar a versão de publicação.
 
+## Publicação com GitHub Pages
+
+O endereço do site é [ONG Bairro Limpo](https://davidbeck117.github.io/site-ong/). A publicação usa GitHub Pages com GitHub Actions. Para configurar no repositório:
+
+1. Abra Settings > Pages no repositório.
+2. Em Build and deployment, escolha GitHub Actions como Source.
+3. Na aba Actions, acompanhe a execução de Publicar site. Se precisar iniciar manualmente, use Run workflow na main.
+4. Quando a publicação terminar, abra o endereço mostrado na execução.
+
+O arquivo `.github/workflows/pages.yml` instala as dependências com `npm ci`, gera o build com `npm run build` e envia somente a pasta `dist`. Os pull requests também passam pelo build, mas a publicação acontece apenas na main. Se o build falhar, a publicação não continua.
+
+O site acompanha as próximas atualizações enviadas à main. O código-fonte e as versões das ferramentas ficam no repositório.
+
 ## Versionamento
 
 Uso o Git para registrar as mudanças e o GitHub para guardar o código e acompanhar o histórico. Por enquanto, a `main` reúne a versão revisada do projeto. Para fazer mudanças, uso uma branch separada e abro um pull request para conferir o que foi alterado antes de juntar com a `main`.
@@ -84,6 +97,8 @@ As tarefas pendentes ficam nas [issues](https://github.com/davidbeck117/site-ong
 
 ```text
 site-ong/
+├── .github/workflows/
+│   └── pages.yml       # Build e publicação automática
 ├── html/
 │   ├── index.html       # Entrada do site e modelos das páginas
 │   ├── projetos.html    # Versão separada da página de projetos
