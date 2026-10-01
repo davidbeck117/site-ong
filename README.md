@@ -19,6 +19,7 @@ A primeira entrega foi marcada como v0.1.0. O projeto continua em desenvolviment
 - Validação dos campos e mensagens de erro no formulário.
 - Rascunhos dos formulários salvos no navegador.
 - Layout que se adapta a diferentes tamanhos de tela.
+- Imagem em WebP com versões menores para diferentes telas.
 - Modo escuro automático, seguindo a preferência do sistema ou navegador.
 - Geração de HTML, CSS e JavaScript minificados para publicação.
 
@@ -29,6 +30,12 @@ HTML, CSS e JavaScript, sem frameworks no site. Para preparar os arquivos de pub
 ## Modo escuro
 
 O site acompanha o tema escolhido no sistema ou navegador. No modo escuro, os fundos ficam mais escuros e os textos, links e ícones usam cores mais claras. Isso foi feito no CSS, aproveitando as variáveis de cor. Para testar, mude a preferência de tema do sistema ou do navegador.
+
+## Imagens
+
+A ilustração da página inicial usa WebP, com versões de 480, 800 e 1312 pixels de largura. O navegador escolhe pelo espaço que a imagem ocupa na tela e pela densidade de pixels do dispositivo. O JPEG fica como alternativa caso o navegador não suporte WebP. Os ícones continuam em SVG, porque já são pequenos e podem mudar de tamanho sem perder definição.
+
+As versões WebP foram geradas a partir do JPEG com Sharp, usando qualidade 75 e mantendo a proporção. A imagem maior passou de 201.510 para 146.962 bytes. As versões menores já ficam prontas na pasta imagens; o build apenas copia esses arquivos.
 
 ## Como abrir
 
