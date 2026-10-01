@@ -66,7 +66,11 @@
 
     <div class="destaque grade-12">
       <picture class="destaque__imagem">
-        <source srcset="../imagens/imagem_limpeza_do_bairro.webp" type="image/webp">
+        <source type="image/webp"
+          srcset="../imagens/imagem_limpeza_do_bairro-480.webp 480w,
+                  ../imagens/imagem_limpeza_do_bairro-800.webp 800w,
+                  ../imagens/imagem_limpeza_do_bairro.webp 1312w"
+          sizes="(min-width: 1440px) 1062px, (min-width: 1024px) 80vw, 90vw">
         <img src="../imagens/imagem_limpeza_do_bairro.jpg"
           alt="Ilustração de moradores e trabalhadores cuidando da limpeza de um bairro. Uma placa diz: Um bairro limpo é mais bonito e saudável."
           width="1312" height="816">
