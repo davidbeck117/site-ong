@@ -21,7 +21,15 @@ function salvarRascunho(formulario) {
 }
 
 function restaurarRascunhos(conteudo) {
+  const hoje = new Date();
+  const dataMaxima = hoje.getFullYear() + "-" +
+    String(hoje.getMonth() + 1).padStart(2, "0") + "-" +
+    String(hoje.getDate()).padStart(2, "0");
+  conteudo.querySelectorAll('input[type="date"]').forEach(function (campo) {
+    campo.max = dataMaxima;
+  });
   conteudo.querySelectorAll("form").forEach(function (formulario) {
+    formulario.querySelector('button[type="submit"]').disabled = false;
     try {
       const dados = carregarDados("bairro-limpo-" + formulario.id);
       if (!dados) return;
