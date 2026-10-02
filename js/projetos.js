@@ -43,6 +43,9 @@ function mostrarProjetos() {
     cartao.querySelector(".etiqueta").textContent = projeto.categoria;
     cartao.querySelector(".cartao__descricao").textContent = projeto.descricao;
     cartao.querySelector(".cartao__link").textContent = projeto.link;
+    const botao = cartao.querySelector(".cartao__detalhes");
+    botao.dataset.projeto = projeto.id;
+    botao.setAttribute("aria-label", "Ver detalhes de " + projeto.titulo);
 
     const complemento = cartao.querySelector(".cartao__complemento");
     if (projeto.complemento) {

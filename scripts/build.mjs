@@ -15,7 +15,7 @@ const pastaExistente = await lstat(destino).catch((erro) => {
 if (pastaExistente?.isSymbolicLink()) throw new Error('A pasta dist não pode ser um link.');
 
 // A ordem acompanha os scripts carregados em html/index.html.
-const scripts = ['projetos.js', 'validacao.js', 'armazenamento.js', 'formularios.js', 'script.js'];
+const scripts = ['projetos.js', 'modal.js', 'validacao.js', 'armazenamento.js', 'formularios.js', 'script.js'];
 const fontesJS = await Promise.all(scripts.map((nome) => readFile(resolve(raiz, 'js', nome), 'utf8')));
 const cssOriginal = await readFile(resolve(raiz, 'css/style.css'), 'utf8');
 const paginas = ['index.html', 'projetos.html', 'cadastro.html'];
@@ -38,7 +38,7 @@ const htmlFinal = [];
 
 for (const [indice, original] of fontesHTML.entries()) {
   let html = original;
-  if (paginas[indice] === 'index.html') {
+  {
     const tagsScripts = [...html.matchAll(/<script\s+src="\.\.\/js\/([^"]+)"\s+defer><\/script>/g)];
     if (tagsScripts.map((tag) => tag[1]).join(',') !== scripts.join(',')) {
       throw new Error('A ordem dos scripts no HTML mudou. Confira a lista no build.');

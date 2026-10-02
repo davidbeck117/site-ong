@@ -1,10 +1,8 @@
 
 const conteudo = document.getElementById("conteudo");
-let paginaAtual = "inicio";
+let paginaAtual = "";
 iniciarFormularios(conteudo);
-conteudo.innerHTML = document.getElementById("pagina-inicio").innerHTML;
-mostrarProjetos();
-restaurarRascunhos(conteudo);
+
 
 function mostrarPagina() {
   // A rota usa o formato #pagina/secao.
@@ -46,8 +44,12 @@ function mostrarPagina() {
   }
 }
 
-window.addEventListener("hashchange", mostrarPagina);
-mostrarPagina();
+if (document.getElementById("pagina-inicio")) {
+  window.addEventListener("hashchange", mostrarPagina);
+  mostrarPagina();
+} else {
+  restaurarRascunhos(conteudo);
+}
 
 document.getElementById("menu-principal").addEventListener("click", function (evento) {
   const link = evento.target.closest("a");

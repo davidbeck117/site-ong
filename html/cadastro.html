@@ -7,6 +7,12 @@
   <title>Cadastro - ONG Bairro Limpo</title>
 
   <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/projetos.js" defer></script>
+  <script src="../js/modal.js" defer></script>
+  <script src="../js/validacao.js" defer></script>
+  <script src="../js/armazenamento.js" defer></script>
+  <script src="../js/formularios.js" defer></script>
+  <script src="../js/script.js" defer></script>
 </head>
 <body class="pagina">
   <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
@@ -48,25 +54,30 @@
       <p class="apresentacao__resumo">Preencha os campos abaixo para experimentar o cadastro. Todos os campos são obrigatórios.</p>
     </section>
 
-    <form class="formulario formulario--completo">
-      <p class="alerta" role="note"><strong>Cadastro demonstrativo.</strong> Use dados fictícios para observar os estilos dos campos. Este formulário não realiza uma inscrição na ONG.</p>
+    <noscript><p class="alerta">Ative o JavaScript para testar o cadastro. O envio fica desativado enquanto ele estiver desligado.</p></noscript>
+
+    <form id="formulario-cadastro" class="formulario formulario--completo" novalidate>
+      <p class="alerta" role="note"><strong>Cadastro demonstrativo.</strong> Use dados fictícios. O rascunho fica salvo neste navegador. Este formulário não realiza uma inscrição na ONG.</p>
       <fieldset>
         <legend>Dados pessoais</legend>
         <div class="formulario__grade">
           <p class="campo campo--inteiro">
             <label for="nome">Nome completo:</label>
-            <input class="campo__entrada" type="text" id="nome" name="nome" placeholder="Seu nome completo" autocomplete="name" required>
+            <input class="campo__entrada" type="text" id="nome" name="nome" placeholder="Seu nome completo" autocomplete="name" required aria-describedby="erro-nome">
+            <small class="campo__erro" id="erro-nome" aria-live="polite"></small>
           </p>
           <p class="campo">
             <label for="cpf">CPF:</label>
             <input class="campo__entrada" type="text" id="cpf" name="cpf" inputmode="text" maxlength="14"
               placeholder="000.000.000-00" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-              title="Digite o CPF no formato 000.000.000-00." aria-describedby="ajuda-cpf" required>
+              title="Digite o CPF no formato 000.000.000-00." aria-describedby="ajuda-cpf erro-cpf" required>
+            <small class="campo__erro" id="erro-cpf" aria-live="polite"></small>
             <small class="campo__ajuda" id="ajuda-cpf">Use pontos e traço: 000.000.000-00.</small>
           </p>
           <p class="campo">
             <label for="data_nascimento">Data de nascimento:</label>
-            <input class="campo__entrada" type="date" id="data_nascimento" name="data_nascimento" min="1900-01-01" max="2026-09-25" autocomplete="bday" required>
+            <input class="campo__entrada" type="date" id="data_nascimento" name="data_nascimento" min="1900-01-01" autocomplete="bday" required aria-describedby="erro-data_nascimento">
+            <small class="campo__erro" id="erro-data_nascimento" aria-live="polite"></small>
           </p>
         </div>
       </fieldset>
@@ -76,14 +87,16 @@
         <div class="formulario__grade">
           <p class="campo">
             <label for="email">E-mail:</label>
-            <input class="campo__entrada campo__entrada--email" type="email" id="email" name="email" placeholder="voce@exemplo.com" autocomplete="email" required>
+            <input class="campo__entrada campo__entrada--email" type="email" id="email" name="email" placeholder="voce@exemplo.com" autocomplete="email" required aria-describedby="erro-email">
+            <small class="campo__erro" id="erro-email" aria-live="polite"></small>
           </p>
           <p class="campo">
             <label for="telefone">Telefone:</label>
             <input class="campo__entrada" type="tel" id="telefone" name="telefone" inputmode="text" maxlength="15"
               placeholder="(00) 00000-0000" pattern="\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}"
               title="Digite o DDD e o telefone: (00) 00000-0000 ou (00) 0000-0000."
-              autocomplete="tel" aria-describedby="ajuda-telefone" required>
+              autocomplete="tel" aria-describedby="ajuda-telefone erro-telefone" required>
+            <small class="campo__erro" id="erro-telefone" aria-live="polite"></small>
             <small class="campo__ajuda" id="ajuda-telefone">Inclua os sinais: (00) 00000-0000 ou (00) 0000-0000.</small>
           </p>
         </div>
@@ -96,29 +109,35 @@
             <label for="cep">CEP:</label>
             <input class="campo__entrada" type="text" id="cep" name="cep" inputmode="text" maxlength="9"
               placeholder="00000-000" pattern="[0-9]{5}-[0-9]{3}" title="Digite o CEP no formato 00000-000."
-              autocomplete="postal-code" aria-describedby="ajuda-cep" required>
+              autocomplete="postal-code" aria-describedby="ajuda-cep erro-cep" required>
+            <small class="campo__erro" id="erro-cep" aria-live="polite"></small>
             <small class="campo__ajuda" id="ajuda-cep">Inclua o traço: 00000-000.</small>
           </p>
           <p class="campo">
             <label for="estado">Estado:</label>
-            <input class="campo__entrada" type="text" id="estado" name="estado" placeholder="Ex.: São Paulo" autocomplete="address-level1" required>
+            <input class="campo__entrada" type="text" id="estado" name="estado" placeholder="Ex.: São Paulo" autocomplete="address-level1" required aria-describedby="erro-estado">
+            <small class="campo__erro" id="erro-estado" aria-live="polite"></small>
           </p>
           <p class="campo">
             <label for="cidade">Cidade:</label>
-            <input class="campo__entrada" type="text" id="cidade" name="cidade" placeholder="Sua cidade" autocomplete="address-level2" required>
+            <input class="campo__entrada" type="text" id="cidade" name="cidade" placeholder="Sua cidade" autocomplete="address-level2" required aria-describedby="erro-cidade">
+            <small class="campo__erro" id="erro-cidade" aria-live="polite"></small>
           </p>
           <p class="campo">
             <label for="rua">Rua:</label>
-            <input class="campo__entrada" type="text" id="rua" name="rua" placeholder="Nome da rua" autocomplete="address-line1" required>
+            <input class="campo__entrada" type="text" id="rua" name="rua" placeholder="Nome da rua" autocomplete="address-line1" required aria-describedby="erro-rua">
+            <small class="campo__erro" id="erro-rua" aria-live="polite"></small>
           </p>
           <p class="campo">
             <label for="numero">Número:</label>
-            <input class="campo__entrada" type="text" id="numero" name="numero" placeholder="Ex.: 125, 125A ou s/n" required>
+            <input class="campo__entrada" type="text" id="numero" name="numero" placeholder="Ex.: 125, 125A ou s/n" required aria-describedby="erro-numero">
+            <small class="campo__erro" id="erro-numero" aria-live="polite"></small>
           </p>
         </div>
       </fieldset>
 
-      <button class="botao botao--primario" type="submit">Enviar cadastro</button>
+      <button class="botao botao--primario" type="submit" disabled>Enviar cadastro</button>
+      <p class="mensagem-formulario" role="status"></p>
     </form>
 
     <div class="links-pagina">
