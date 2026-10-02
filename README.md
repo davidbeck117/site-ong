@@ -9,7 +9,7 @@ Esse projeto é um site para a ONG Bairro Limpo e faz parte das minhas atividade
 
 ## Estado do projeto
 
-A primeira entrega foi marcada como v0.1.0. A revisão atual ficou na [v0.2.0](https://github.com/davidbeck117/site-ong/releases/tag/v0.2.0), também como pré-lançamento. O projeto continua em desenvolvimento e já tem modo escuro, imagens adaptadas a diferentes telas, geração de uma versão minificada e publicação pelo GitHub Pages. A navegação por teclado, os formulários e os atributos de acessibilidade passaram pela revisão. O teste real com leitor de tela ainda está pendente.
+A primeira entrega foi marcada como v0.1.0. A revisão atual ficou na [v0.2.0](https://github.com/davidbeck117/site-ong/releases/tag/v0.2.0), também como pré-lançamento. O projeto continua em desenvolvimento e já tem modo escuro, imagens adaptadas a diferentes telas, geração de uma versão minificada e publicação pelo GitHub Pages. A navegação por teclado, os formulários e os atributos de acessibilidade passaram pela revisão. O teste com leitor de tela também foi feito, sem problemas percebidos na leitura dos textos, títulos, campos e envio demonstrativo do cadastro.
 
 ## Funcionalidades
 
@@ -99,7 +99,7 @@ As mensagens dos commits começam com um tipo, seguido de uma descrição curta:
 
 A primeira entrega recebeu a tag [v0.1.0](https://github.com/davidbeck117/site-ong/releases/tag/v0.1.0) e ficou como pré-lançamento, porque o site ainda é uma base em desenvolvimento. A numeração segue o formato `MAJOR.MINOR.PATCH`: o primeiro número indica mudanças que quebram a compatibilidade, o segundo indica novas funcionalidades e o terceiro, correções. Enquanto estiver na versão `0.x.x`, a estrutura ainda pode mudar bastante.
 
-As tarefas pendentes ficam nas [issues](https://github.com/davidbeck117/site-ong/issues). O marco [Revisão e preparação do site](https://github.com/davidbeck117/site-ong/milestone/1), chamado de milestone no GitHub, reúne o que falta revisar antes da primeira versão estável.
+As tarefas pendentes ficam nas [issues](https://github.com/davidbeck117/site-ong/issues). O marco [Revisão e preparação do site](https://github.com/davidbeck117/site-ong/milestone/1), chamado de milestone no GitHub, reuniu as tarefas desta revisão.
 
 ## Organização dos arquivos
 
@@ -181,4 +181,4 @@ Para conferir a versão gerada, rode `npm run build` e `npm run preview`. Depois
 6. Abrir o cadastro separado e conferir que o envio não coloca os campos na URL.
 7. Conferir os mesmos pontos no tema claro e no escuro.
 
-O build e o comportamento no navegador foram conferidos antes da publicação. Os atributos e a estrutura de acessibilidade também foram revisados, mas ainda falta testar o que um leitor de tela anuncia na prática.
+O build e o comportamento no navegador foram conferidos antes da publicação. Os atributos e a estrutura de acessibilidade também foram revisados. No teste manual com leitor de tela, os textos, títulos, campos e envio demonstrativo do cadastro foram lidos como esperado.
