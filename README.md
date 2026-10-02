@@ -9,7 +9,7 @@ Esse projeto é um site para a ONG Bairro Limpo e faz parte das minhas atividade
 
 ## Estado do projeto
 
-A primeira entrega foi marcada como v0.1.0. O projeto continua em desenvolvimento e já tem modo escuro, imagens adaptadas a diferentes telas, geração de uma versão minificada e publicação pelo GitHub Pages. A navegação por teclado, os formulários e os atributos de acessibilidade passaram pela revisão. O teste real com leitor de tela ainda está pendente.
+A primeira entrega foi marcada como v0.1.0. A revisão atual ficou na [v0.2.0](https://github.com/davidbeck117/site-ong/releases/tag/v0.2.0), também como pré-lançamento. O projeto continua em desenvolvimento e já tem modo escuro, imagens adaptadas a diferentes telas, geração de uma versão minificada e publicação pelo GitHub Pages. A navegação por teclado, os formulários e os atributos de acessibilidade passaram pela revisão. O teste real com leitor de tela ainda está pendente.
 
 ## Funcionalidades
 
