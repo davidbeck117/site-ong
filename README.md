@@ -9,13 +9,14 @@ Esse projeto é um site para a ONG Bairro Limpo e faz parte das minhas atividade
 
 ## Estado do projeto
 
-A primeira entrega foi marcada como v0.1.0. O projeto continua em desenvolvimento e já tem modo escuro, imagens adaptadas a diferentes telas, geração de uma versão minificada e publicação pelo GitHub Pages. A revisão completa de acessibilidade ainda está pendente.
+A primeira entrega foi marcada como v0.1.0. O projeto continua em desenvolvimento e já tem modo escuro, imagens adaptadas a diferentes telas, geração de uma versão minificada e publicação pelo GitHub Pages. A navegação por teclado, os formulários e os atributos de acessibilidade passaram pela revisão. O teste real com leitor de tela ainda está pendente.
 
 ## Funcionalidades
 
 - Navegação entre início, projetos e cadastro, sem recarregar a página.
 - Menu para celular e submenu com as seções dos projetos.
 - Cartões de projetos montados com JavaScript.
+- Janela de detalhes dos projetos, que também pode ser usada pelo teclado.
 - Validação dos campos e mensagens de erro no formulário.
 - Rascunhos dos formulários salvos no navegador.
 - Layout que se adapta a diferentes tamanhos de tela.
@@ -81,7 +82,14 @@ O site acompanha as próximas atualizações enviadas à main. O código-fonte e
 
 ## Versionamento
 
-Uso o Git para registrar as mudanças e o GitHub para guardar o código e acompanhar o histórico. Por enquanto, a `main` reúne a versão revisada do projeto. Para fazer mudanças, uso uma branch separada e abro um pull request para conferir o que foi alterado antes de juntar com a `main`.
+Uso o Git para registrar as mudanças e o GitHub para guardar o código. No começo, as branches iam direto para a `main`. A partir desta revisão, o fluxo segue o GitFlow:
+
+- A `develop` reúne o que está sendo preparado para a próxima entrega.
+- As mudanças saem dela em uma branch separada, como `codex/revisao-final`, e voltam por pull request depois da revisão.
+- Uma branch de release prepara a entrega, que vai para a `main` e recebe uma tag. Os ajustes dessa entrega também voltam para a `develop`.
+- Se aparecer uma correção urgente na versão publicada, ela pode sair da `main` em uma branch de hotfix e voltar para as duas branches.
+
+A `main` fica com a versão publicada. O histórico antigo foi mantido, sem tentar mudar o fluxo das entregas anteriores.
 
 As mensagens dos commits começam com um tipo, seguido de uma descrição curta:
 
@@ -108,6 +116,7 @@ site-ong/
 ├── js/
 │   ├── script.js        # Navegação entre as páginas
 │   ├── projetos.js      # Dados e montagem dos cartões
+│   ├── modal.js         # Abertura e fechamento dos detalhes
 │   ├── validacao.js     # Validação dos campos
 │   ├── formularios.js   # Eventos e rascunhos dos formulários
 │   └── armazenamento.js # Leitura e gravação no localStorage
@@ -124,14 +133,52 @@ site-ong/
 └── README.md
 ```
 
-A versão com navegação e validação em JavaScript começa em `html/index.html`. Os arquivos `projetos.html` e `cadastro.html` são versões separadas, com conteúdo em HTML e estilos em CSS.
+A navegação entre as páginas começa em `html/index.html`. Os arquivos `projetos.html` e `cadastro.html` também podem ser abertos separados. Eles usam os mesmos estilos e scripts para manter o comportamento dos detalhes e do cadastro.
 
 ## Formulários e dados
 
-O cadastro é demonstrativo: os dados não são enviados para uma ONG ou servidor. Use dados fictícios nos testes. Na versão aberta pelo `index.html`, os rascunhos ficam no `localStorage` do navegador, inclusive quando o preenchimento está incompleto. Para apagá-los, limpe os dados do site no navegador.
+O cadastro é demonstrativo: os dados não são enviados para uma ONG ou servidor. Use dados fictícios nos testes. Os rascunhos ficam no `localStorage` do navegador, inclusive quando o preenchimento está incompleto. No site publicado, o cadastro separado e o cadastro dentro do site usam o mesmo rascunho. Para apagá-los, limpe os dados do site no navegador.
 
 A validação de CPF confere apenas o formato, sem verificar os dígitos. Os contatos exibidos no site também são exemplos. O projeto não usa APIs externas, autenticação ou banco de dados.
 
 ## Manutenção
 
 Os textos das páginas ficam nos modelos de `html/index.html`. Para mudar os cartões, edite a lista em `js/projetos.js`. As cores, fontes e espaçamentos estão nas variáveis do início de `css/style.css`.
+
+## Como as páginas mudam
+
+O endereço depois do `#` indica a página e, quando necessário, a seção. Por exemplo, `#projetos/acoes` abre os projetos e leva até as ações de limpeza. O `script.js` lê esse endereço, coloca o modelo da página dentro do `main` e atualiza o título, o link ativo do menu e o foco. Se só a seção mudar, o conteúdo continua no lugar.
+
+Os modelos ficam no próprio HTML. Usei esse jeito para reaproveitar a estrutura sem precisar de um framework. Nos cartões, o JavaScript clona um `template` e preenche título, categoria, descrição e links com a lista de `projetos.js`. Os textos são colocados com `textContent`.
+
+## Eventos e arquivos JavaScript
+
+O `hashchange` acompanha a mudança de página. O clique nos links fecha o menu, e o botão de detalhes abre o modal. Nos formulários, o `input` verifica o campo e salva o rascunho enquanto ele é preenchido. O `submit` impede o envio para um servidor e confere todos os campos.
+
+Os eventos dos formulários ficam no `main`, porque os campos entram e saem quando a página muda. Assim, não preciso cadastrar os mesmos eventos toda vez. O `formularios.js` chama a validação de `validacao.js` e usa `armazenamento.js` para salvar ou recuperar o rascunho. O `modal.js` usa a lista de projetos para preencher a janela de detalhes.
+
+## Validação e mensagens
+
+Campo obrigatório vazio mostra uma mensagem de preenchimento. E-mail, CPF, telefone e CEP precisam seguir o formato indicado. A data de nascimento deve ficar entre 01/01/1900 e o dia atual. Essa data máxima é atualizada quando o formulário é aberto.
+
+Ao tentar concluir com erro, os campos ficam destacados e o foco vai para o primeiro que precisa ser corrigido. Os erros também ficam associados aos campos por `aria-describedby` e `aria-invalid`. Quando tudo está certo, aparece a confirmação de que o rascunho ficou salvo no navegador. Se o armazenamento estiver bloqueado ou o rascunho não puder ser lido, aparece uma mensagem explicando o problema.
+
+## Detalhes dos projetos
+
+A janela usa o elemento `dialog` do HTML. Ela tem um título associado, texto do projeto, link para o cadastro e botão de fechar. Enquanto está aberta, o teclado fica dentro dela. Esc fecha a janela, e o foco volta para o botão que a abriu.
+
+## O que foi revisado
+
+Na revisão, o cadastro separado ainda colocava os dados na URL ao enviar e tinha uma data máxima fixa. Ele passou a usar a mesma validação e o mesmo armazenamento do cadastro principal. O envio para o servidor foi impedido e o botão fica desativado se o JavaScript estiver desligado. No modal, também ajustei Tab e Shift+Tab para o foco continuar dentro da janela.
+
+Para conferir a versão gerada, rode `npm run build` e `npm run preview`. Depois, vale testar:
+
+1. Abrir início, projetos e cadastro em telas pequenas e grandes, sem rolagem para os lados.
+2. Usar Tab, Shift+Tab, Enter e Espaço no menu, submenu, links e formulários.
+3. Abrir os detalhes, circular pelos controles, fechar com Esc e conferir onde o foco voltou.
+4. Tentar enviar o cadastro vazio, com formatos errados e com datas fora do intervalo.
+5. Preencher com dados fictícios, trocar de página e recarregar para conferir o rascunho.
+6. Abrir o cadastro separado e conferir que o envio não coloca os campos na URL.
+7. Conferir os mesmos pontos no tema claro e no escuro.
+
+O build e o comportamento no navegador foram conferidos antes da publicação. Os atributos e a estrutura de acessibilidade também foram revisados, mas ainda falta testar o que um leitor de tela anuncia na prática.

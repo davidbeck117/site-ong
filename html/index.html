@@ -8,6 +8,7 @@
 
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/projetos.js" defer></script>
+  <script src="../js/modal.js" defer></script>
   <script src="../js/validacao.js" defer></script>
   <script src="../js/armazenamento.js" defer></script>
   <script src="../js/formularios.js" defer></script>
@@ -95,7 +96,7 @@
           <input type="checkbox" id="interesse-mutiroes" name="interesse_mutiroes" value="sim">
           <label for="interesse-mutiroes">Tenho interesse nos mutirões.</label>
         </p>
-        <button class="botao botao--primario botao--largo" type="submit">Quero ser voluntário</button>
+        <button class="botao botao--primario botao--largo" type="submit" disabled>Quero ser voluntário</button>
         <a href="#cadastro">Ir para a página de cadastro</a>
         <p class="mensagem-formulario" role="status"></p>
       </form>
@@ -266,7 +267,7 @@
         </div>
       </fieldset>
 
-      <button class="botao botao--primario" type="submit">Enviar cadastro</button>
+      <button class="botao botao--primario" type="submit" disabled>Enviar cadastro</button>
       <p class="mensagem-formulario" role="status"></p>
     </form>
 
@@ -284,8 +285,22 @@
       <p class="cartao__descricao"></p>
       <p class="cartao__complemento"></p>
       <a class="cartao__link" href="#cadastro"></a>
+      <button class="botao botao--primario cartao__detalhes" type="button" aria-haspopup="dialog" aria-controls="detalhes-projeto">Ver detalhes</button>
     </article>
   </template>
+
+
+  <dialog class="dialogo" id="detalhes-projeto" aria-labelledby="titulo-detalhes" aria-describedby="texto-detalhes">
+    <h2 id="titulo-detalhes">Detalhes do projeto</h2>
+    <p id="texto-detalhes"></p>
+    <p id="complemento-detalhes" hidden></p>
+    <div class="dialogo__acoes">
+      <a class="botao botao--primario" href="#cadastro">Ir para o cadastro</a>
+      <form method="dialog">
+        <button class="botao botao--primario" autofocus>Fechar</button>
+      </form>
+    </div>
+  </dialog>
 
 </body>
 </html>
